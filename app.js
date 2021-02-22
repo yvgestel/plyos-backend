@@ -9,8 +9,6 @@ const trainingRoutes = require('./api/routes/training');
 const userRoutes = require('./api/routes/user');
 const blogRoutes = require('./api/routes/blog');
 
-console.log("Check")
-
 mongoose.connect(
     process.env.MONGODB_URI,
     {
@@ -18,6 +16,8 @@ mongoose.connect(
         useUnifiedTopology: true,
         useCreateIndex: true,
     });
+mongoose.connection.once('open', () => { console.log('MongoDB Connected'); });
+mongoose.connection.on('error', (err) => { console.log('MongoDB connection error: ', err);
 
 app.use(morgan('dev'));
 app.use('/uploads', express.static('uploads'));
