@@ -9,20 +9,14 @@ const trainingRoutes = require('./api/routes/training');
 const userRoutes = require('./api/routes/user');
 const blogRoutes = require('./api/routes/blog');
 
-// mongoose.connect(
-//     process.env.MONGODB_URI,
-//     {
-//         useNewUrlParser: true,
-//         useUnifiedTopology: true,
-//         useCreateIndex: true,
-//     }).then(() => console.log("MongoDb connected"))
-//     .catch(err => console.log(err));
-
-const MongoClient = require("mongodb").MongoClient;
-const client = await new MongoClient(process.env.MONGODB_URI,{ useNewUrlParser: true});
-client.connect();
-mongoose.connection.once('open', () => { console.log('MongoDB Connected'); });
-mongoose.connection.on('error', (err) => { console.log('MongoDB connection error: ', err);
+mongoose.connect(
+    process.env.MONGODB_URI,
+    {
+        useNewUrlParser: true,
+        useUnifiedTopology: true,
+        useCreateIndex: true,
+    }).then(() => console.log("MongoDb connected"))
+    .catch(err => console.log(err));
 
 app.use(morgan('dev'));
 app.use('/uploads', express.static('uploads'));
