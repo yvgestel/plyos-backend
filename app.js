@@ -9,6 +9,8 @@ const trainingRoutes = require('./api/routes/training');
 const userRoutes = require('./api/routes/user');
 const blogRoutes = require('./api/routes/blog');
 
+console.log("Check")
+
 mongoose.connect(
     process.env.MONGODB_URI,
     {
@@ -38,7 +40,7 @@ app.use('/user', userRoutes);
 app.use('/blog', blogRoutes);
 
 app.use((req, res, next) => {
-    const error = new Error('Not ffound');
+    const error = new Error('Not found');
     error.status = 404;
     next(error);
 });
