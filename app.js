@@ -9,10 +9,8 @@ const trainingRoutes = require('./api/routes/training');
 const userRoutes = require('./api/routes/user');
 const blogRoutes = require('./api/routes/blog');
 
-console.log(process.env.MONGO_ATLAS_PW)
-
 mongoose.connect(
-    'mongodb+srv://yvgestel:VYRkpyhTBazp9GAv@plyos.wh0lr.azure.mongodb.net/plyos?retryWrites=true&w=majority',
+    process.env.MONGODB_URI,
     {
         useNewUrlParser: true,
         useUnifiedTopology: true,
