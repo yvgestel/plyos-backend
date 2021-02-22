@@ -17,7 +17,8 @@ mongoose.connect(
         useNewUrlParser: true,
         useUnifiedTopology: true,
         useCreateIndex: true,
-    });
+    }).then(() => console.log("MongoDb connected"))
+    .catch(err => console.log(err));
 
 app.use(morgan('dev'));
 app.use('/uploads', express.static('uploads'));
