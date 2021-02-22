@@ -4,7 +4,7 @@ const checkAuth = require('../middleware/check-auth');
 
 const TrainingController = require('../controllers/training');
 
-router.get("/", checkAuth, TrainingController.training_get_all);
+router.get("/:user", checkAuth, TrainingController.training_get_all);
 
 router.post("/", checkAuth, TrainingController.training_create_training) ;
 

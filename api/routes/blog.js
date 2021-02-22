@@ -29,20 +29,16 @@ const upload = multer(
     fileFilter: fileFilter
 });
 
-const ExerciseController = require ('../controllers/exercise');
+const BlogController = require('../controllers/blog');
 
-router.get('/', ExerciseController.exercise_get_all);
+router.post('/', upload.single('blogImage'), BlogController.blog_create_blog);
 
-router.post('/', upload.single('exerciseImage'), ExerciseController.exercise_create_exercise);
+router.get('/', BlogController.blog_get_all);
 
-router.get('/latest', ExerciseController.exercise_get_latest_exercises);
+router.get('/:blogId', BlogController.blog_get_blog);
 
-router.get('/most-watched', ExerciseController.exercise_get_most_viewed_exercises);
+router.patch('/:blogId', BlogController.blog_update_blog);
 
-router.get('/:exerciseId', ExerciseController.exercise_get_exercise);
+router.delete('/:blogId', BlogController.blog_delete_blog);
 
-router.delete('/:exerciseId', ExerciseController.exercise_delete_exercise);
-
-router.patch('/:exerciseId', ExerciseController.exercise_update_exercise);
-
-module.exports = router; 
+module.exports = router;

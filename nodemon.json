@@ -1,5 +1,7 @@
 {
     "env": {
-        "MONGO_ATLAS_PW": "JFj5VXUR!"
+        "MONGO_ATLAS_PW": "JFj5VXUR!",
+        "JWT_KEY": "secret",
+        "BASE_URL": "http://localhost:3000/",
     }
 }

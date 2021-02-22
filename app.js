@@ -7,18 +7,21 @@ const mongoose = require('mongoose');
 const exercisesRoutes = require('./api/routes/exercises');
 const trainingRoutes = require('./api/routes/training');
 const userRoutes = require('./api/routes/user');
+const blogRoutes = require('./api/routes/blog');
 
 mongoose.connect(
     'mongodb+srv://yvgestel:' +
     process.env.MONGO_ATLAS_PW + 
     '@plyos.wh0lr.azure.mongodb.net/plyos?retryWrites=true&w=majority',
     {
-        useMongoClient: true
+        useNewUrlParser: true,
+        useUnifiedTopology: true,
+        useCreateIndex: true,
     });
 
 app.use(morgan('dev'));
 app.use('/uploads', express.static('uploads'));
-app.use(bodyParser.urlencoded({extended: false}));
+app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 
 app.use((req, res, next) => {
@@ -34,6 +37,7 @@ app.use((req, res, next) => {
 app.use('/exercises', exercisesRoutes);
 app.use('/training', trainingRoutes);
 app.use('/user', userRoutes);
+app.use('/blog', blogRoutes);
 
 app.use((req, res, next) => {
     const error = new Error('Not found');
