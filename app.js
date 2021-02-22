@@ -15,7 +15,7 @@ mongoose.connect(
         useNewUrlParser: true,
         useUnifiedTopology: true,
         useCreateIndex: true,
-    }).then(() => console.log("MongoDb connected"))
+    }.then(() => console.log("MongoDb connected"))
     .catch(err => console.log(err));
 
 app.use(morgan('dev'));
