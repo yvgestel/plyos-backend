@@ -38,7 +38,7 @@ app.use('/user', userRoutes);
 app.use('/blog', blogRoutes);
 
 app.use((req, res, next) => {
-    const error = new Error('Not found');
+    const error = new Error('Not ffound');
     error.status = 404;
     next(error);
 });
