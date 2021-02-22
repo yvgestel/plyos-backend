@@ -12,9 +12,7 @@ const blogRoutes = require('./api/routes/blog');
 console.log(process.env.MONGO_ATLAS_PW)
 
 mongoose.connect(
-    'mongodb+srv://yvgestel:' +
-    process.env.MONGO_ATLAS_PW + 
-    '@plyos.wh0lr.azure.mongodb.net/plyos?retryWrites=true&w=majority',
+    'mongodb+srv://yvgestel:JFj5VXUR!@plyos.wh0lr.azure.mongodb.net/plyos?retryWrites=true&w=majority',
     {
         useNewUrlParser: true,
         useUnifiedTopology: true,
