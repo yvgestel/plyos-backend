@@ -1,7 +1,16 @@
 {
     "env": {
-        "MONGO_ATLAS_PW": "JFj5VXUR!",
-        "JWT_KEY": "secret",
-        "BASE_URL": "http://localhost:3000/",
+        "MONGO_ATLAS_PW": {
+            "description": "MONGODB Password",
+            "value": "JFj5VXUR!"
+        },
+        "JWT_KEY": {
+            "description": "JWT Password",
+            "value": "secret"
+        },
+        "BASE_URL": {
+            "description": "MONGODB Password",
+            "value": "http://localhost:3000/"
+        }
     }
 }
