@@ -169,26 +169,23 @@ exports.user_update_password = (req, res, next) => {
       return res.status(500).json({
         error: err
       })} else {
-        return res.status(200).json({
-          password: req.body.password,
-          newPassword: hash
+        User.updateMany({ _id: id }, { $set: req.body })
+        .exec()
+        .then(result => {
+          res.status(200).json({
+            message: "User updated",
+            request: {
+              type: "GET",
+              url: "http://localhost:3000/user/" + id
+            }
+          });
         })
-      }})
-  // User.updateMany({ _id: id }, { $set: req.body })
-  //   .exec()
-  //   .then(result => {
-  //     res.status(200).json({
-  //       message: "User updated",
-  //       request: {
-  //         type: "GET",
-  //         url: "http://localhost:3000/user/" + id
-  //       }
-  //     });
-  //   })
-  //   .catch(err => {
-  //     console.log(err);
-  //     res.status(500).json({
-  //       error: err
-  //     });
-  //   });
+        .catch(err => {
+          console.log(err);
+          res.status(500).json({
+            error: err
+          });
+        });
+    }
+  })
 };
