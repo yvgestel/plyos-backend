@@ -164,9 +164,16 @@ exports.user_update_user = (req, res, next) => {
 
 exports.user_update_password = (req, res, next) => {
   const id = req.params.userId;
-  res.status(200).json({
-    message: req.body
-  })
+  bcrypt.hash(req.body.password, 10, (err, hash) => {
+    if (err) {
+      return res.status(500).json({
+        error: err
+      })} else {
+        return res.status(200).json({
+          password: req.body.password,
+          newPassword: hash
+        })
+      }})
   // User.updateMany({ _id: id }, { $set: req.body })
   //   .exec()
   //   .then(result => {
