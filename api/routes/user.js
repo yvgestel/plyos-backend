@@ -16,4 +16,6 @@ router.get("/:userId/favorites", checkAuth, UserController.user_get_favorites);
 
 router.patch("/:userId", checkAuth, UserController.user_update_user)
 
+router.patch("/password/:userId", checkAuth, UserController.user_update_password)
+
 module.exports = router;

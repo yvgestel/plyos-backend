@@ -143,8 +143,6 @@ exports.user_get_user = (req, res, next) => {
 
 exports.user_update_user = (req, res, next) => {
   const id = req.params.userId;
-  console.log("req.body")
-  console.log(req.body)
   User.updateMany({ _id: id }, { $set: req.body })
     .exec()
     .then(result => {
@@ -162,4 +160,28 @@ exports.user_update_user = (req, res, next) => {
         error: err
       });
     });
+};
+
+exports.user_update_password = (req, res, next) => {
+  const id = req.params.userId;
+  res.status(200).json({
+    message: req.body
+  })
+  // User.updateMany({ _id: id }, { $set: req.body })
+  //   .exec()
+  //   .then(result => {
+  //     res.status(200).json({
+  //       message: "User updated",
+  //       request: {
+  //         type: "GET",
+  //         url: "http://localhost:3000/user/" + id
+  //       }
+  //     });
+  //   })
+  //   .catch(err => {
+  //     console.log(err);
+  //     res.status(500).json({
+  //       error: err
+  //     });
+  //   });
 };
